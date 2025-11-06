@@ -24,6 +24,19 @@ using StoreNetwork = std::map<std::string, InventoryList>; //
 // Based on category_type ("Juice", "Snacks", "Supply"):
 // Insert item_name into the correct list for the correct store name.
 // Close file
+//loadInitialData wire frame
 
+void loadInitialData(StoreNetwork& stores) {
+    // read the file
+    // cout if file empty error
+    // cout if file not empty and read successfully
+}
 
-
+// Define function: printCurrentInventory
+// Parameters: constant reference to StoreNetwork map
+// printCurrentInventory wire frame
+void printCurrentInventory(const StoreNetwork& stores) {
+    // printing code
+    // display neatly the ui
+    // if the store is not empty print the first one
+}
