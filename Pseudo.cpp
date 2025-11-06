@@ -65,3 +65,14 @@ void simulateComplexDay(StoreNetwork& stores) {
 
 // Define main function
 // Initialize random seed 
+// main function wireframe
+int main() {
+    // initialize the store to store store data
+    // seed a random seed
+    // open the file
+    // display the inventory
+    // make a loop for 30 day
+    // call both function
+    // print the change
+    // End of the main function with return 0
+}
