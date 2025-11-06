@@ -1,0 +1,17 @@
+Project : Inventory tracker
+
+Project Overview : This project will simulate an Inventory tracker on store with some problems such as shortage or Overflow
+
+Implementation of std::map 
+The map's key (std::string) will represent the store's branch name
+The value (std::array<std::list<std::string>, 3>) will represent the store's inventory
+
+ex)array[0]: A list of Juice (e.g., Orange juice, Apple juice)
+
+This simulation will have a one month time period to run 
+
+The program starts as it reads the txt file that has initial stock info
+
+for events, there will be standard sale, restock, and speical events such as disaster, shortage or Overflow
+
+
