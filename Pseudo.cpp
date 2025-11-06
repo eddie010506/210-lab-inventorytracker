@@ -40,3 +40,28 @@ void printCurrentInventory(const StoreNetwork& stores) {
     // display neatly the ui
     // if the store is not empty print the first one
 }
+
+// Define function: simulateDay
+// Parameters: reference to StoreNetwork map
+// simulateDay wireframe
+void simulateDay(StoreNetwork& stores) {
+    // there will be a loop for this to have 5 normal events a day
+    // select a random store
+    // select a random item
+    // select a random normal event
+    // update the inventory
+}
+
+// Define function: simulateComplexDay
+// Parameters: reference to StoreNetwork map
+// simulateComplexDay wireframe
+void simulateComplexDay(StoreNetwork& stores) {
+    // happens randomly may not happen or happen 10% chance, but will be called every time
+    // select a random store
+    // select a random item
+    // select a random complex event(Theft, disaster, shortage overflow)
+    // update the inventory
+}
+
+// Define main function
+// Initialize random seed 
