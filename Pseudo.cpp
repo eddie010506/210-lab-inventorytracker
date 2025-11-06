@@ -72,7 +72,8 @@ int main() {
     // open the file
     // display the inventory
     // make a loop for 30 day
-    // call both function
+    // call simulateday 5times with a loop
+    // can call complex day each day but have a randomness to call or not
     // print the change
     // End of the main function with return 0
 }
