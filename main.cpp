@@ -40,8 +40,30 @@ void loadInitialData(StoreNetwork& stores) {
     //item will be in the format of store name, category, item name
     while (getline(inFile, line)) {
         stringstream ss(line);
+        if (getline(ss, storeName, ',') && getline(ss, category, ',') && getline(ss, itemName, ',')) 
+        {
+            int categoryIndex = -1;
+            if (category == "Juice") {
+                categoryIndex = 0;
+            }   
+            else if (category == "Snacks") {
+                categoryIndex = 1;
+            } 
+            else if (category == "Supply") {
+                categoryIndex = 2;
+            }
 
+            if (categoryIndex != -1) {
+                stores[storeName][categoryIndex].push_back(itemName);
+                itemsLoaded++;
+            }
+        }
     }
+    inFile.close();
+    if (itemsLoaded > 0) {
+        cout << itemsLoaded << " items read successfully" << endl;
+    }
+
     // read the file
     // cout if file empty error
     // cout if file not empty and read successfully

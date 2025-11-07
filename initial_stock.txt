@@ -1,1 +1,1 @@
-StoreA Juice Apple_Juice
+StoreA,Juice,Apple_Juice
