@@ -118,20 +118,21 @@ void simulateDay(StoreNetwork& stores) {
     int category = rand() % 3;
 
 
-    
-    if (!stores[store][category].empty()) {// checking if that one is empty
-        list<string>& itemsList = stores[store][category];
-        int listSize = itemsList.size();
-        int randIndex = rand() % listSize;
-        auto it = itemsList.begin();
+    for (int event = 0; event < 5; ++event) { 
+        if (!stores[store][category].empty()) {// checking if that one is empty
+            list<string>& itemsList = stores[store][category];
+            int listSize = itemsList.size();
+            int randIndex = rand() % listSize;
+            auto it = itemsList.begin();
 
-        advance(it, randIndex);
+            advance(it, randIndex);
 
-        string itemSold = *it;
-        itemsList.erase(it);
+            string itemSold = *it;
+            itemsList.erase(it);
+            
+            cout << itemSold << " sold from " << store << (array<string,3>{"Juice","Snacks","Supply"})[category]  << endl;
+            
         
-        cout << itemSold << " sold from " << store << (array<string,3>{"Juice","Snacks","Supply"})[category]  << endl;
-        
-    
+        }
     }
 }
