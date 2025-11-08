@@ -31,6 +31,7 @@ string getRandomStore(const StoreNetwork& stores) {// function to get a random s
 }
 
 int main() {
+    srand(time(0));
     StoreNetwork simulationStores;
     loadInitialData(simulationStores);//creating and calling the data structure
     printCurrentInventory(simulationStores);
@@ -170,6 +171,20 @@ void simulateComplexDay(StoreNetwork& stores) {
         
         int currentStock = itemCounts[itemToSteal];
         int itemsToSteal = currentStock / 2;
+        if (availableItems.empty()) {
+            return; // nothing to steal, so exit the function
+        }
+
+        auto it = itemsList.begin();
+        int itemsStolen = 0;
+        while (it != itemsList.end()) {
+            if (*it == itemToSteal && itemsStolen < itemsToSteal) {
+                it = itemsList.erase(it); 
+                itemsStolen++;
+            } else {
+                ++it; 
+            }
+        }
         
 
     }
