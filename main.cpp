@@ -13,6 +13,7 @@ using namespace std; // copied from the pseudo
 using InventoryList = std::array<std::list<std::string>, 3>;
 using StoreNetwork = std::map<std::string, InventoryList>; // copied from pseudo
 void loadInitialData(StoreNetwork& stores);
+void printCurrentInventory(const StoreNetwork& stores);
 
 int main() {
     StoreNetwork simulationStores;
@@ -67,4 +68,19 @@ void loadInitialData(StoreNetwork& stores) {
     // read the file
     // cout if file empty error
     // cout if file not empty and read successfully
+}
+
+void printCurrentInventory(const StoreNetwork& stores){
+    if (stores.empty()) {
+        cout << "Inventory is currently empty." << endl;// checking if the store is empty
+        return;
+    }
+
+    const array<string, 3> categories = {"Juice", "Snacks", "Supply"};
+    for (const auto& pair : stores){
+        const InventoryList& inventory = pair.second;
+        for (int i = 0; i < inventory.size(); ++i) {
+            
+        }
+    }
 }
