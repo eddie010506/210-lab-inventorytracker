@@ -167,13 +167,15 @@ void simulateComplexDay(StoreNetwork& stores) {
         for(const auto& pair : itemCounts) {
             availableItems.push_back(pair.first);
         }
+
+        if (availableItems.empty()) {
+            return; // nothing to steal, so exit the function
+        }// moved it up front to not let 0 division happen
         string itemToSteal = availableItems[rand() % availableItems.size()];
         
         int currentStock = itemCounts[itemToSteal];
         int itemsToSteal = currentStock / 2;
-        if (availableItems.empty()) {
-            return; // nothing to steal, so exit the function
-        }
+
 
         auto it = itemsList.begin();
         int itemsStolen = 0;
@@ -185,11 +187,25 @@ void simulateComplexDay(StoreNetwork& stores) {
                 ++it; 
             }
         }
+        cout << "  BURGLARY! " << itemsStolen << " units of " << itemToSteal << " were stolen!" << endl;
         
 
     }
-    else {
-        return;
+    else {// random things expire
+        int numToExpire = (rand() % 2) + 1;
+        
+        for (int i = 0; i < numToExpire && !itemsList.empty(); ++i) {
+
+            int listSize = itemsList.size();
+            int randIndex = rand() % listSize;
+            auto it = itemsList.begin();
+            advance(it, randIndex);
+            
+            string expiredItem = *it;
+            itemsList.erase(it);
+
+            cout << "  EXPIRED: 1 unit of " << expiredItem << " expired." << endl;
+        }
     }
 
 
