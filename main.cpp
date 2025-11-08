@@ -36,6 +36,8 @@ int main() {
     printCurrentInventory(simulationStores);
     simulateDay(simulationStores);
     printCurrentInventory(simulationStores);// checking if the sold item is gone
+    simulateComplexDay(simulationStores);
+    printCurrentInventory(simulationStores);
     return 0;
 }
 
@@ -150,5 +152,30 @@ void simulateComplexDay(StoreNetwork& stores) {
     int eventType = rand() % 2;
     list<string>& itemsList = stores[store][category];
 
-    
+    if (eventType == 0) {// burglary that takes half of a certain item
+
+
+
+        map<string, int> itemCounts;
+        for (const string& item : itemsList) {
+            itemCounts[item]++;
+        }
+
+        // pick a random item to steal from the map
+        vector<string> availableItems;
+        for(const auto& pair : itemCounts) {
+            availableItems.push_back(pair.first);
+        }
+        string itemToSteal = availableItems[rand() % availableItems.size()];
+        
+        int currentStock = itemCounts[itemToSteal];
+        int itemsToSteal = currentStock / 2;
+        
+
+    }
+    else {
+        return;
+    }
+
+
 }
