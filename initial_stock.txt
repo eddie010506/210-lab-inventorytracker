@@ -4,3 +4,9 @@ StoreA,Supply,Toilet_Paper
 StoreA,Juice,Apple_Juice
 StoreA,Juice,Orange_Juice
 StoreA,Snacks,Cheetos
+StoreB,Juice,Apple_Juice
+StoreB,Snacks,Chips
+StoreB,Supply,Toilet_Paper
+StoreB,Juice,Apple_Juice
+StoreB,Juice,Orange_Juice
+StoreB,Snacks,Gummy

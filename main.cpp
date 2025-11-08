@@ -64,19 +64,30 @@ void printCurrentInventory(const StoreNetwork& stores){
         cout << "Inventory is currently empty." << endl;// checking if the store is empty
         return;
     }
+    for (const auto& pair : stores) {
+        cout << "Store: " << pair.first << endl;// putting the code inside the loop to print all the stores
 
-    const array<string, 3> categories = {"Juice", "Snacks", "Supply"};
-    for (const auto& pair : stores){
+
+        const array<string, 3> categories = {"Juice", "Snacks", "Supply"};
+        
         const InventoryList& inventory = pair.second;
         for (int i = 0; i < inventory.size(); ++i) {
             cout << "  " << left << categories[i] << ": ";
             const list<string>& items = inventory[i];
-            string output;
+
+            map<string, int> itemCounts;
             for (const string& item : items) {
-                output += item + ", ";
-                
+                itemCounts[item]++; // making output cleaner
+            }
+
+            string output;
+            for (const auto& countPair : itemCounts) {
+                output += countPair.first + "[" + to_string(countPair.second) + "], ";
             }
             cout << output.substr(0, output.length() - 2) << endl;
         }
     }
+            
+        
+
 }
