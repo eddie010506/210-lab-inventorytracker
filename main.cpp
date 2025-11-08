@@ -8,6 +8,7 @@
 #include <ctime>
 #include <sstream>
 #include <vector>
+#include <iterator>
 
 using namespace std; // copied from the pseudo
 
@@ -33,6 +34,7 @@ int main() {
     loadInitialData(simulationStores);//creating and calling the data structure
     printCurrentInventory(simulationStores);
     simulateDay(simulationStores);
+    printCurrentInventory(simulationStores);// checking if the sold item is gone
     return 0;
 }
 
@@ -116,7 +118,19 @@ void simulateDay(StoreNetwork& stores) {
     int category = rand() % 3;
 
 
-    if (!stores[store][category].empty()) {
+    
+    if (!stores[store][category].empty()) {// checking if that one is empty
+        list<string>& itemsList = stores[store][category];
+        int listSize = itemsList.size();
+        int randIndex = rand() % listSize;
+        auto it = itemsList.begin();
+
+        advance(it, randIndex);
+
+        string itemSold = *it;
+        itemsList.erase(it);
+        
+        cout << itemSold << " sold from " << store << (array<string,3>{"Juice","Snacks","Supply"})[category]  << endl;
         
     
     }
