@@ -139,5 +139,16 @@ void simulateDay(StoreNetwork& stores) {
 }
 
 void simulateComplexDay(StoreNetwork& stores) {
+    if (stores.empty()) return;
+
+    //getting a random store
+    string store = getRandomStore(stores);
+    
+    //getting a random category
+    int category = rand() % 3;
+    const array<string, 3> categories = {"Juice", "Snacks", "Supply"};
+    int eventType = rand() % 2;
+    list<string>& itemsList = stores[store][category];
+
     
 }
