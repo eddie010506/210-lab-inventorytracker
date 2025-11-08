@@ -14,11 +14,13 @@ using InventoryList = std::array<std::list<std::string>, 3>;
 using StoreNetwork = std::map<std::string, InventoryList>; // copied from pseudo
 void loadInitialData(StoreNetwork& stores);
 void printCurrentInventory(const StoreNetwork& stores);
+void simulateDay(StoreNetwork& stores);
 
 int main() {
     StoreNetwork simulationStores;
     loadInitialData(simulationStores);//creating and calling the data structure
     printCurrentInventory(simulationStores);
+    simulateDay(simulationStores);
     return 0;
 }
 
@@ -89,5 +91,9 @@ void printCurrentInventory(const StoreNetwork& stores){
     }
             
         
+
+}
+
+void simulateDay(StoreNetwork& stores) {
 
 }
