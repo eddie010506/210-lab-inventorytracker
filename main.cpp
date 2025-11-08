@@ -7,6 +7,8 @@
 #include <cstdlib>    
 #include <ctime>
 #include <sstream>
+#include <vector>
+
 using namespace std; // copied from the pseudo
 
 
@@ -15,6 +17,16 @@ using StoreNetwork = std::map<std::string, InventoryList>; // copied from pseudo
 void loadInitialData(StoreNetwork& stores);
 void printCurrentInventory(const StoreNetwork& stores);
 void simulateDay(StoreNetwork& stores);
+
+string getRandomStore(const StoreNetwork& stores) {// function to get a random shop
+    if (stores.empty()) return "";
+    
+    vector<string> storeNames;
+    for (const auto& pair : stores) {
+        storeNames.push_back(pair.first);
+    }
+    return storeNames[rand() % storeNames.size()];
+}
 
 int main() {
     StoreNetwork simulationStores;
@@ -95,5 +107,17 @@ void printCurrentInventory(const StoreNetwork& stores){
 }
 
 void simulateDay(StoreNetwork& stores) {
+    if (stores.empty()) return;
 
+    //getting a random store
+    string store = getRandomStore(stores);
+    
+    //getting a random category
+    int category = rand() % 3;
+
+
+    if (!stores[store][category].empty()) {
+        
+    
+    }
 }
