@@ -18,18 +18,7 @@ void printCurrentInventory(const StoreNetwork& stores);
 int main() {
     StoreNetwork simulationStores;
     loadInitialData(simulationStores);//creating and calling the data structure
-    if (simulationStores.count("StoreA")){
-        cout << "loaded nicely" << endl;
-        const auto& juiceList = simulationStores["StoreA"][0];
-        if (juiceList.empty()) {
-            cout << "  (List is empty)" << endl;
-        } 
-        else {
-            for (const string& item : juiceList) {
-                cout << item << endl;
-            }
-        }
-    }
+    printCurrentInventory(simulationStores);
     return 0;
 }
 
@@ -80,7 +69,12 @@ void printCurrentInventory(const StoreNetwork& stores){
     for (const auto& pair : stores){
         const InventoryList& inventory = pair.second;
         for (int i = 0; i < inventory.size(); ++i) {
-            
+            const list<string>& items = inventory[i];
+            string output;
+            for (const string& item : items) {
+                output += item + ", ";
+                cout << output<< endl;
+            }
         }
     }
 }
