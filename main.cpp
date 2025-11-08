@@ -18,6 +18,7 @@ using StoreNetwork = std::map<std::string, InventoryList>; // copied from pseudo
 void loadInitialData(StoreNetwork& stores);
 void printCurrentInventory(const StoreNetwork& stores);
 void simulateDay(StoreNetwork& stores);
+void simulateComplexDay(StoreNetwork& stores);
 
 string getRandomStore(const StoreNetwork& stores) {// function to get a random shop
     if (stores.empty()) return "";
@@ -135,4 +136,8 @@ void simulateDay(StoreNetwork& stores) {
         
         }
     }
+}
+
+void simulateComplexDay(StoreNetwork& stores) {
+    
 }
