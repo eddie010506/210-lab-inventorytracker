@@ -69,12 +69,14 @@ void printCurrentInventory(const StoreNetwork& stores){
     for (const auto& pair : stores){
         const InventoryList& inventory = pair.second;
         for (int i = 0; i < inventory.size(); ++i) {
+            cout << "  " << left << categories[i] << ": ";
             const list<string>& items = inventory[i];
             string output;
             for (const string& item : items) {
                 output += item + ", ";
-                cout << output<< endl;
+                
             }
+            cout << output.substr(0, output.length() - 2) << endl;
         }
     }
 }
