@@ -1,2 +1,11 @@
 Bug #1: display of item was dirty with commas, duplicate and wrong info
     fix : output.substr(0, output.length() - 2) used this function to delete commas and took out the cout out side the loop for no duplicate
+Bug #2: adding restock them promgram not running
+    fix : was missing const and variables on the code so added to every prototype and stuff
+Bug #3 : complex day when burglary haapens sometimes code crashed due to division by 0 
+    fix : added item check that if the item is 0 then pass
+Bug #4 : random was not random, picked same item and stock every time
+    fix : had no srand(0) on the main so added it
+Bug #5 : loadInitialData was not parsing the items correctly from the inital_stock file
+    fix : had a typo of . point on the parsing variable so changed it to ,
+

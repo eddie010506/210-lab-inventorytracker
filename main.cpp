@@ -18,7 +18,7 @@ using StoreNetwork = std::map<std::string, InventoryList>; // copied from pseudo
 using Itemlist = std::array<std::vector<string>, 3>;
 void loadInitialData(StoreNetwork& stores);
 void printCurrentInventory(const StoreNetwork& stores);
-void simulateDay(StoreNetwork& stores, Itemlist& listeditems);
+void simulateDay(StoreNetwork& stores, const Itemlist& listeditems);
 void simulateComplexDay(StoreNetwork& stores);
 void LoadItemlist(Itemlist& listeditems);
 
@@ -179,6 +179,7 @@ void simulateDay(StoreNetwork& stores, const Itemlist& listeditems) {
             for (int i = 0; i < bulkAmount; ++i) {
                 itemsList.push_back(itemToRestock);
             }
+            cout << "  RESTOCK: " << store << " received " << bulkAmount << " units of " << itemToRestock  << endl;
 
         }
         else{
