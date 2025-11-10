@@ -1,0 +1,10 @@
+Juice,Apple_Juice
+Juice,Orange_Juice
+Juice,Grape_Juice
+Snacks,Chips
+Snacks,Cookies
+Snacks,Pretzels
+Snacks,Crackers
+Supply,Napkins
+Supply,Soap
+Supply,Sponges

@@ -1,0 +1,20 @@
+Bug #1: display of item was dirty with commas, duplicate and wrong info
+    fix : output.substr(0, output.length() - 2) used this function to delete commas and took out the cout out side the loop for no duplicate
+Bug #2: adding restock them promgram not running
+    fix : was missing const and variables on the code so added to every prototype and stuff
+Bug #3 : complex day when burglary haapens sometimes code crashed due to division by 0 
+    fix : added item check that if the item is 0 then pass
+Bug #4 : random was not random, picked same item and stock every time
+    fix : had no srand(0) on the main so added it
+Bug #5 : loadInitialData was not parsing the items correctly from the inital_stock file
+    fix : had a typo of . point on the parsing variable so changed it to ,
+Bug #6 : simulateComplexDay burglary was not correctly removing multiple items from the list, only removed one.
+    fix: Used an iterator in a while loop and call itemsList.erase(it) for all items that matched the one to be stolen.
+Bug #7 : when the stock is one even though burglary happens no items were stolen
+    fix : changed the function to int itemsToSteal = (currentStock / 2) + (currentStock % 2) to round up 1
+Bug #8 : The data structure std::map<std::string, std::list<std::string>>  couldn't separate Juice, Snacks, and Supply.
+    fix : Changed the map's value to std::array<std::list<std::string>, 3> to hold three distinct lists per store
+Bug #9 : loadInitialData only used if (category == "Juice"),so could not get datas of other items
+    fix : Added else if statements for "Snacks" (index 1) and "Supply" (index 2)
+Bug #10 : the code would not show the final stocks after 30 days
+    fix: added one more print after the days loop
