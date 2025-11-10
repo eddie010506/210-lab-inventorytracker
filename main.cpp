@@ -18,7 +18,7 @@ using StoreNetwork = std::map<std::string, InventoryList>; // copied from pseudo
 using Itemlist = std::array<std::vector<string>, 3>;
 void loadInitialData(StoreNetwork& stores);
 void printCurrentInventory(const StoreNetwork& stores);
-void simulateDay(StoreNetwork& stores);
+void simulateDay(StoreNetwork& stores, Itemlist& listeditems);
 void simulateComplexDay(StoreNetwork& stores);
 void LoadItemlist(Itemlist& listeditems);
 
@@ -35,13 +35,16 @@ string getRandomStore(const StoreNetwork& stores) {// function to get a random s
 int main() {
     srand(time(0));
     StoreNetwork simulationStores;
+    Itemlist listeditemsforstock;
+
     loadInitialData(simulationStores);//creating and calling the data structure
     printCurrentInventory(simulationStores);
+    LoadItemlist(listeditemsforstock);
     for (int day = 1; day <= 30; ++day) {
         cout << "\n--- Day " << day << " Simulation ---" << endl;
 
         // every day call simulateDay which can sell or restock
-        simulateDay(simulationStores);
+        simulateDay(simulationStores, listeditemsforstock);
 
         // 10% chance for a complex event 
         if (rand() % 10 == 0) { // 1 in 10 chance
@@ -148,9 +151,12 @@ void LoadItemlist(Itemlist& listeditems) {//loading the item from the list
         }
     }
     inFile.close();
+    if (itemsLoaded > 0) {
+        cout << itemsLoaded << " items read successfully from itemlist.txt" << endl;
+    }
 }
 
-void simulateDay(StoreNetwork& stores) {
+void simulateDay(StoreNetwork& stores, const Itemlist& listeditems) {
     if (stores.empty()) return;
 
     //getting a random store
@@ -164,23 +170,35 @@ void simulateDay(StoreNetwork& stores) {
         if (rand()%5 ==0){
             //1 in a 5 chance there will be a item restock
             //made a item list file and pull it from there
+            int category = rand() % 3;
+            list<string>& itemsList = stores[store][category];
+            const vector<string>& possibleItems = listeditems[category];
 
+            string itemToRestock = possibleItems[rand() % possibleItems.size()];
+            int bulkAmount = 5; //restock 5 each time
+            for (int i = 0; i < bulkAmount; ++i) {
+                itemsList.push_back(itemToRestock);
+            }
 
         }
-        if (!stores[store][category].empty()) {// checking if that one is empty
-            list<string>& itemsList = stores[store][category];
-            int listSize = itemsList.size();
-            int randIndex = rand() % listSize;
-            auto it = itemsList.begin();
+        else{
 
-            advance(it, randIndex);
-
-            string itemSold = *it;
-            itemsList.erase(it);
-            
-            cout << itemSold << " sold from " << store << (array<string,3>{"Juice","Snacks","Supply"})[category]  << endl;
-            
         
+            if (!stores[store][category].empty()) {// checking if that one is empty
+                list<string>& itemsList = stores[store][category];
+                int listSize = itemsList.size();
+                int randIndex = rand() % listSize;
+                auto it = itemsList.begin();
+
+                advance(it, randIndex);
+
+                string itemSold = *it;
+                itemsList.erase(it);
+                
+                cout << itemSold << " sold from " << store << (array<string,3>{"Juice","Snacks","Supply"})[category]  << endl;
+                
+            
+            }
         }
     }
 }
