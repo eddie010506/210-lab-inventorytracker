@@ -14,4 +14,7 @@ Bug #7 : when the stock is one even though burglary happens no items were stolen
     fix : changed the function to int itemsToSteal = (currentStock / 2) + (currentStock % 2) to round up 1
 Bug #8 : The data structure std::map<std::string, std::list<std::string>>  couldn't separate Juice, Snacks, and Supply.
     fix : Changed the map's value to std::array<std::list<std::string>, 3> to hold three distinct lists per store
-
+Bug #9 : loadInitialData only used if (category == "Juice"),so could not get datas of other items
+    fix : Added else if statements for "Snacks" (index 1) and "Supply" (index 2)
+Bug #10 : the code would not show the final stocks after 30 days
+    fix: added one more print after the days loop

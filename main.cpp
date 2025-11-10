@@ -50,7 +50,9 @@ int main() {
         if (rand() % 10 == 0) { // 1 in 10 chance
             simulateComplexDay(simulationStores);
         }
-    } 
+    }
+    cout << "\n--- Final Inventory (After 30 Days) ---" << endl;
+    printCurrentInventory(simulationStores);
     return 0;
 }
 
