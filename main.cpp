@@ -35,10 +35,17 @@ int main() {
     StoreNetwork simulationStores;
     loadInitialData(simulationStores);//creating and calling the data structure
     printCurrentInventory(simulationStores);
-    simulateDay(simulationStores);
-    printCurrentInventory(simulationStores);// checking if the sold item is gone
-    simulateComplexDay(simulationStores);
-    printCurrentInventory(simulationStores);
+    for (int day = 1; day <= 30; ++day) {
+        cout << "\n--- Day " << day << " Simulation ---" << endl;
+
+        // every day call simulateDay which can sell or restock
+        simulateDay(simulationStores);
+
+        // 10% chance for a complex event 
+        if (rand() % 10 == 0) { // 1 in 10 chance
+            simulateComplexDay(simulationStores);
+        }
+    } 
     return 0;
 }
 
@@ -123,6 +130,10 @@ void simulateDay(StoreNetwork& stores) {
 
 
     for (int event = 0; event < 5; ++event) { 
+        if (rand()%5 ==0){
+            //1 in a 5 chance there will be a item restock
+            
+        }
         if (!stores[store][category].empty()) {// checking if that one is empty
             list<string>& itemsList = stores[store][category];
             int listSize = itemsList.size();

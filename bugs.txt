@@ -1,0 +1,2 @@
+Bug #1: display of item was dirty with commas, duplicate and wrong info
+    fix : output.substr(0, output.length() - 2) used this function to delete commas and took out the cout out side the loop for no duplicate
