@@ -237,7 +237,7 @@ void simulateComplexDay(StoreNetwork& stores) {
         string itemToSteal = availableItems[rand() % availableItems.size()];
         
         int currentStock = itemCounts[itemToSteal];
-        int itemsToSteal = currentStock / 2;
+        int itemsToSteal = (currentStock / 2) + (currentStock % 2);
 
 
         auto it = itemsList.begin();

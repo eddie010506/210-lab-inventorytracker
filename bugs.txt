@@ -8,4 +8,10 @@ Bug #4 : random was not random, picked same item and stock every time
     fix : had no srand(0) on the main so added it
 Bug #5 : loadInitialData was not parsing the items correctly from the inital_stock file
     fix : had a typo of . point on the parsing variable so changed it to ,
+Bug #6 : simulateComplexDay burglary was not correctly removing multiple items from the list, only removed one.
+    fix: Used an iterator in a while loop and call itemsList.erase(it) for all items that matched the one to be stolen.
+Bug #7 : when the stock is one even though burglary happens no items were stolen
+    fix : changed the function to int itemsToSteal = (currentStock / 2) + (currentStock % 2) to round up 1
+Bug #8 : The data structure std::map<std::string, std::list<std::string>>  couldn't separate Juice, Snacks, and Supply.
+    fix : Changed the map's value to std::array<std::list<std::string>, 3> to hold three distinct lists per store
 
