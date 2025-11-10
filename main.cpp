@@ -15,10 +15,12 @@ using namespace std; // copied from the pseudo
 
 using InventoryList = std::array<std::list<std::string>, 3>;
 using StoreNetwork = std::map<std::string, InventoryList>; // copied from pseudo
+using Itemlist = std::array<std::vector<string>, 3>;
 void loadInitialData(StoreNetwork& stores);
 void printCurrentInventory(const StoreNetwork& stores);
 void simulateDay(StoreNetwork& stores);
 void simulateComplexDay(StoreNetwork& stores);
+void LoadItemlist(Itemlist& listeditems);
 
 string getRandomStore(const StoreNetwork& stores) {// function to get a random shop
     if (stores.empty()) return "";
@@ -119,6 +121,35 @@ void printCurrentInventory(const StoreNetwork& stores){
 
 }
 
+void LoadItemlist(Itemlist& listeditems) {//loading the item from the list
+    ifstream inFile("itemlist.txt");
+    string line;
+    string category, itemName;
+    int itemsLoaded = 0;
+    while (getline(inFile, line)) {//copied from the load initial stock
+        stringstream ss(line);
+        if (getline(ss, category, ',') && getline(ss, itemName, ',')) 
+        {
+            int categoryIndex = -1;
+            if (category == "Juice") {
+                categoryIndex = 0;
+            }   
+            else if (category == "Snacks") {
+                categoryIndex = 1;
+            } 
+            else if (category == "Supply") {
+                categoryIndex = 2;
+            }
+
+            if (categoryIndex != -1) {
+                listeditems[categoryIndex].push_back(itemName);
+                itemsLoaded++;
+            }
+        }
+    }
+    inFile.close();
+}
+
 void simulateDay(StoreNetwork& stores) {
     if (stores.empty()) return;
 
@@ -132,7 +163,9 @@ void simulateDay(StoreNetwork& stores) {
     for (int event = 0; event < 5; ++event) { 
         if (rand()%5 ==0){
             //1 in a 5 chance there will be a item restock
-            
+            //made a item list file and pull it from there
+
+
         }
         if (!stores[store][category].empty()) {// checking if that one is empty
             list<string>& itemsList = stores[store][category];
